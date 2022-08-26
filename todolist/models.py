@@ -1,8 +1,7 @@
-from turtle import title
 from django.db import models
-
+from django.core.validators import MinValueValidator
 # Create your models here.
-class User(models.Model):
+class Person(models.Model):
     SUBSCRIPTION_TYPE = (
         ('F', 'Free'),
         ('C', 'Classic'),
@@ -32,6 +31,9 @@ class Task(models.Model):
     )
     
     description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     task_status = models.CharField(max_length=1, choices = TASK_STATUS)
     task_priority = models.CharField(max_length=1, choices = TASK_PRIORITY)
+    person = models.ForeignKey(Person, on_delete=models.CASCADE, null=True)
 
