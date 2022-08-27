@@ -1,0 +1,19 @@
+<html>
+    <body>
+        {% if query_set %}
+        <ul>
+        {% for q in query_set %}
+            <li><a href="https://www.google.com">{{ q.first_name }}</a></li>
+        {% endfor %}
+        </ul>
+        {% else %}
+        <p>No person is available.</p>
+        {% endif %}
+    </body>
+</html>
+
+<!-- <html>
+    <body>
+        {{query_set}}
+    </body>
+</html> -->
