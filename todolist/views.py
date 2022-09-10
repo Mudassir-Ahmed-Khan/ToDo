@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from django.utils import timezone
 from .models import Person, Task
-
+from django.shortcuts import get_object_or_404, render, HttpResponseRedirect
 
 
 
@@ -35,6 +35,8 @@ def add_person(request):
     context['form']= form
     return render(request, "todolist/person_details_form.html", context)
 
+
+
 def add_task(request):
     context = {}
     task_details_form = TaskDetailsFrom(request.POST or None)
@@ -44,8 +46,16 @@ def add_task(request):
     context['task_details_form'] = task_details_form
     return render(request, "todolist/task_details_form.html", context)
 
-def delete_task(request):
+def delete_task(request, id):
     context = {}
+    obj = get_object_or_404(Task, id = id)
+    if request.method == "POST":
+        obj.delete()
+        return HttpResponseRedirect("/task/<int:id>/")
+    return render(request, "todolist/delete_tasks.html", context)
+
+
+
 
 def users(request):
     users_set = list(Person.objects.all())

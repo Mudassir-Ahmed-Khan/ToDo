@@ -4,7 +4,9 @@
         <ul>
         {% for q in task_per_person %}
         <li>
-            {{ q.description }}
+            <a href="http://127.0.0.1:8000/1/delete/">
+                {{ q.description }}
+            </a>
         </li>
         {% endfor %}
         </ul>

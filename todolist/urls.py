@@ -12,7 +12,8 @@ urlpatterns = [
     path('description/', views.description),
     path('description/<int:number>/', views.description_number, name = 'description'),
     path('users/', views.users),
-    path('task/<int:number>/', views.display_task, name = 'display_task')
+    path('task/<int:number>/', views.display_task, name = 'display_task'),
+    path('<int:id>/delete/', views.delete_task, name = 'delete_task'),
 ]
 
 
