@@ -1,0 +1,15 @@
+<html>
+    <body>
+        {% if task_per_person %}
+        <ul>
+        {% for q in task_per_person %}
+        <li>
+            {{ q.description }}
+        </li>
+        {% endfor %}
+        </ul>
+        {% else %}
+        <p>Nothing to do.</p>
+        {% endif %}
+    </body>
+</html>

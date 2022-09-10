@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator
+
 # Create your models here.
 class Person(models.Model):
     SUBSCRIPTION_TYPE = (
@@ -11,6 +12,8 @@ class Person(models.Model):
     last_name = models.CharField(max_length = 50)
     subscription_type = models.CharField(max_length = 1, choices = SUBSCRIPTION_TYPE)
     joined_at = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.first_name
 
 class Task(models.Model):
     TASK_TYPE = (
@@ -36,4 +39,7 @@ class Task(models.Model):
     task_status = models.CharField(max_length=1, choices = TASK_STATUS)
     task_priority = models.CharField(max_length=1, choices = TASK_PRIORITY)
     person = models.ForeignKey(Person, on_delete=models.CASCADE, null=True)
+
+
+
 

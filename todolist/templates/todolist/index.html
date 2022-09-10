@@ -1,9 +1,13 @@
 <html>
     <body>
-        {% if query_set %}
+        {% if users_set %}
         <ul>
-        {% for q in query_set %}
-            <li><a href="https://www.google.com">{{ q.first_name }}</a></li>
+        {% for q in users_set %}
+        <li>
+            <a href="{% url 'todolist:display_task' q.id %}">
+                {{ q.first_name }}
+            </a>
+        </li>
         {% endfor %}
         </ul>
         {% else %}
@@ -11,9 +15,3 @@
         {% endif %}
     </body>
 </html>
-
-<!-- <html>
-    <body>
-        {{query_set}}
-    </body>
-</html> -->
