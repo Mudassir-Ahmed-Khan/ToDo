@@ -1,17 +1,46 @@
 <html>
+    <head>
+        <style>
+        .task {
+          background-color: tomato;
+          size: 30px;
+          color: white;
+          border: 5px solid black;
+          margin: 5px;
+          padding: 5px;
+        }
+        </style>
+    </head>
+
+    <div class="task"> 
+        <h1>
+            Tasks
+        </h1>
+    </div>
+
     <body>
-        {% if users_set %}
+        {% if task_per_person %}
         <ul>
-        {% for q in users_set %}
-        <li>
-            <a href="{% url 'todolist:display_task' q.id %}">
-                {{ q.first_name }}
-            </a>
-        </li>
+        {% for q in task_per_person %}
+            <div class="task">
+                {{ q.description }}
+                <form action = "/delete_task/{{q.id}}/" method="post">
+                    <input type="submit" value="Delete Task">
+                </form>
+            </div> 
         {% endfor %}
         </ul>
         {% else %}
-        <p>No person is available.</p>
+        <p>Kindly Add Task.</p>
         {% endif %}
+        <hr />
+            <div class="task">
+                <form action = "/display_task/" method = "POST">
+                    {% csrf_token %}
+                    {{ task_details_form.as_p }}
+                    <input type="submit" value="Add Task">
+                </form>
+            </div>
     </body>
 </html>
+
