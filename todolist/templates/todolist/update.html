@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <center>
+            <div class="main">
+                <!-- Create a Form -->
+                <form acton="/display_task/" method="POST">
+                    <!-- Security token by Django -->
+                    {% csrf_token %}
+             
+                    <!-- form as paragraph -->
+                    {{ update_task_form.as_p }}
+             
+                    <input type="submit" value="Update">
+                </form>
+            </div>
+        </center>
+    </body>
+</html>

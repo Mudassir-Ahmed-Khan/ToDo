@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form action = "/result/" method = "post">
+            {% csrf_token %}
+            <input type="text" name="num1">
+            <input type="text" name="num2">
+            <input type="submit" value="Add Number">
+        </form>
+    </body>
+</html>

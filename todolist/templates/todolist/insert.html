@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <center>
+            <form action = "" method = "post">
+                {% csrf_token %}
+                {{ user_detail_form.as_p }}
+                <input type = "submit" value = "Add User">
+            </form>
+        </center>
+    </body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        {% for q in users_set %}
+        {{ q.first_name }}
+        <form action = "/delete_user/" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Delete" />
+        </form>
+        <br/>
+        <hr/>
+        {% endfor %}
+    </body>
+</html>

@@ -21,18 +21,15 @@ class Task(models.Model):
         ('E', 'Educational'),
         ('W', 'Work')
     )
-
     TASK_STATUS = (
         ('C', 'Complete'),
         ('P', 'Pending'),
     )
-
     TASK_PRIORITY = (
         ('L','Low'),
         ('M', 'Medium'),
         ('H', 'High')
     )
-    
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -40,6 +37,19 @@ class Task(models.Model):
     task_priority = models.CharField(max_length=1, choices = TASK_PRIORITY)
     person = models.ForeignKey(Person, on_delete=models.CASCADE, null=True)
 
+class Number(models.Model):
+    Number1 = models.DecimalField(max_digits = 6, decimal_places = 2)
+    Number2 = models.DecimalField(max_digits = 6, decimal_places = 2)
 
+class GeeksModel(models.Model):
+ 
+    # fields of the model
+    title = models.CharField(max_length = 200)
+    description = models.TextField()
+ 
+    # renames the instances of the model
+    # with their title name
+    def __str__(self):
+        return self.title
 
 
